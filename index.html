@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap 101 Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/index.css">
+  <!--select 样式-->
+  <link rel="stylesheet" type="text/css" href="css/cs-skin-slide.css" />
+
+  <style>
+
+  </style>
+  <script src="js/classie.js"></script>
+  <script src="js/selectFx.js"></script>
+
+</head>
+<body>
+
+<div id="wrap">
+  <div class="container">
+    <p class="bigTitle">Get In Touch</p>
+    <div class="square"></div>
+    <form action="">
+      <div class="pub">
+        <span class="p-text">Hi,I'm</span><input type="text" class="p-input " value="Ron Manager">
+        <span class="p-text">.from</span><input type="text" class="p-input" value="Acme Supplies Ltd">
+      </div>
+      <div class="pub">
+        <span class="p-text">I would like with</span><input type="text" class="p-input">
+        <span class="p-text">.My budeget is</span>
+
+        <select class="cs-select cs-skin-slide p-input">
+            <option value="0">...</option>
+            <option value="1">$1000-$1200</option>
+            <option value="2">$2000-$2200</option>
+            <option value="3">$3000-$4200</option>
+            <option value="4">$5000-$6200</option>
+          </select>
+      </div>
+      <div class="pub">
+        <span class="p-text">and you can reach me at </span>
+        <input  id="email" class="p-input" >
+        <span class="p-text">.I'm looking forward to hearing from you</span>
+      </div>
+      <div class="btn"><input type="button" value="SEND" class="send"></div>
+
+
+
+    </form>
+  </div>
+</div>
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script type="text/javascript">
+  window.onload = function ()
+  {
+    var aInput = document.getElementsByTagName("input");
+    var em=document.getElementById("email");
+
+    //表单验证
+    em.onfocus=function () {
+      this.className="f-text-high"
+    }
+    em.onblur=function () {
+      var reg=/^[a-z0-9](\w|\.|-)*@([a-z0-9]+-?[a-z0-9]+\.){1,3}[a-z]{2,4}$/i;
+      if (reg.test(em.value)==true && em.value!==''){
+        this.className="f-text-right"
+        return true;
+      }else {
+        this.className = "f-text-error"
+        return false;
+      }
+    }
+
+    
+
+    //点击变色，离开验证变色的实现
+    for (var  i = 0; i < aInput.length-2; i++)
+    {
+      aInput[i].onfocus = function ()
+      {
+        this.className="f-text-high"
+
+      };
+      aInput[i].onblur = function ()
+      {
+        if(this.value){
+          this.className="f-text-right"
+        }else {
+          this.className = "f-text-error"
+        }
+      }
+    }
+
+    (function() {
+      [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+        new SelectFx(el);
+      } );
+    })();
+  };
+</script>
+</body>
+</html>
